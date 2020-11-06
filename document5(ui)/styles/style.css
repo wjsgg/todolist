@@ -1,0 +1,294 @@
+body{
+    margin: 0;
+}
+ul{
+   margin: 0;
+   padding: 0;
+}
+.tabs-contain{
+    margin: 30px 50px;
+}
+li{
+    list-style: none;
+}
+.tabs{ 
+    display: flex;
+    padding: 0;
+}
+.tabs-contain .tabs{
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+.tabs a{
+    display:block;
+    height:100%;
+    padding: 10px 50px;
+    background: #ddd;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    color: #444;
+    text-shadow: 3px 3px 0 rgba(255, 255, 255, .8);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .4);
+    border-radius: 30px 30px 0 0;
+}
+.contain{
+    background: #ddb;
+    padding: 50px;
+    height: 220px;
+    border-radius: 0 5px 5px 5px;
+    box-shadow: 0 -2px 3px -2px rgba(0, 0, 0, .5);
+}
+.item{
+    display: none;
+}
+.show{
+    display: block;
+}
+.current a{
+    background: #ddb;
+}
+.dialog{
+    width: 400px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 1003;
+    left: 50%;
+    margin-left: -200px;
+    top:0px;
+}
+.dialogshow{
+    opacity:0.6;
+    display: block;   
+}
+.dialogshow p{
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color:white;
+}
+.btnbox{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    padding: 20px;
+}
+#btn1{
+    background-color: skyblue;
+    color: white;
+    padding: 10px 20px;
+}
+#btn1:hover,#btn2:hover{
+    cursor: pointer;
+}
+#btn2{
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 20px;
+}
+.btnborder a{
+    display: block;
+    
+    height: 100%;
+    width: 100%;
+}
+.text{
+    padding: 20px;
+    background-color: black;
+}
+.mask{
+    position: fixed; 
+    top: 0px;
+    left: 0px; 
+    background-color: black;   
+    z-index: 1002;   
+    opacity:0.4; 
+    filter: alpha(opacity=40);  
+}
+.btn{
+    display: block;
+    cursor: pointer;
+    height: 100px;
+    width: 200px;
+    font-size: 24px;
+    margin: 30px auto;
+    background-color: skyblue;
+    color: white;
+    border: 1px solid skyblue;
+    border-radius: 20px;
+}
+.slider{
+    position: relative;
+    width: 600px;
+    height: 280px;
+    padding: 0;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 50px auto ;
+}
+.slider ul{
+    position: absolute;
+    margin: 0;
+    width: 3000px;
+}
+.slider li{
+    display: block;
+    float: left;
+    width: 600px;
+    height: 280px;
+}
+.odivnav{
+    width:80px;
+    float: left;
+    position: absolute;
+    left: 50%;
+    margin-left:-40px;
+    bottom: 0;
+}
+.spanlist{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color:#fff;
+    border-radius: 8px;
+}
+.spanlist:hover{
+    cursor: pointer;
+}
+.btn-left,.btn-right{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    line-height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    
+}
+.btn-left:hover,
+.btn-right:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.7);
+}
+.btn-left{
+    left: 0px;
+    top: 50%;
+    margin-top: -20px;
+}
+.btn-right{
+    right: 0px;
+    top: 50%;
+    margin-top: -20px;
+}
+.model-select-box{
+    height: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    margin: 100px 50px;
+    
+}
+.model-select-title{
+    width: 80px;
+    padding: 8px;
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(49, 48, 48);
+}
+.model-select-pulldown{
+    width: 100%;
+}
+.model-select-text{
+    padding: 8px;
+    font-size: 24px;
+    color: rgb(177,175,175);
+    border: 1px solid rgba(177, 175, 175, 0.623);
+}
+.model-select-text:hover{
+    cursor: pointer;
+    background-color: rgb(205, 224, 205);
+    color: white;
+}
+.list{
+    position: relative;
+    z-index: 201;
+    border: 1px solid rgba(177, 175, 175, 0.623);
+    margin-top: 100px;
+    display: none;
+    background-color: #fff;
+}
+.list li{
+    padding: 8px;
+    font-size: 24px;
+    color: rgb(56, 55, 55);
+}
+.list li:hover{
+    background-color:rgb(126, 221, 126);
+    color: white !important;
+    cursor: pointer;
+}
+.model-select-box .model-select-pulldown .colortext{
+    color:  rgb(177,175,175);
+}
+.transparentbox{
+    position: fixed; 
+    display: none;
+    top:0;
+    left:0; 
+    height: 100%;
+    width: 100%;
+    z-index: 200; 
+    background-color:transparent;  
+}
+.checkbox{
+    height: 50px;
+    margin: 60px 50px;
+    display: flex;
+    flex-flow: row;
+    font-size: 24px;
+    align-items: center;
+}
+.checkbox-title{
+    width: 80px;
+    padding: 8px;
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(49, 48, 48);
+}
+.Radio1,.Radio2{
+    height: 18px;
+    width: 18px;
+    border-radius: 12px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-image: url(../false.png);
+}
+.Radio:hover{
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(177, 174, 174, 0.76);
+}
+.check{
+    height: 50px;
+    line-height:50px;
+}
+.check div{
+    display: inline-block;
+}
+.mr{
+    margin-right: 16px;
+}
+.footer{
+    width: 100%;
+    height: 100px;
+    margin-top: 100px;
+    border-top: 1px solid  rgba(180, 179, 179, 0.808);
+    background-color: rgba(230, 230, 230, 0.445);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .4);
+}
