@@ -27,27 +27,19 @@
             var _this = $(this);
             _this.click(function(){     
                 $("#mask").css("height","100%");   
-                $("#mask").css("width","100%");
-                $("#mask").animate({opacity:'0.8'},500);
-                $(".dialog").addClass("dialogshow");  
-                $(".dialog").animate({opacity:'1',top:'200px'},300,function(){})   
+                $("#mask").css("width","100%");               
+                $(".dialog").addClass("dialogshow");     
                 $(".dialog").css("position","fixed");
             })
             $("#btn1").click(function(){
                 $("#mask").css("height",0);   
                 $("#mask").css("width",0);
-                $("#mask").animate({opacity:'0.4'});
-                $(".dialog").animate({top:'-200px'},300,function(){
-                    $(".dialog").removeClass("dialogshow");
-                })
+                $(".dialog").removeClass("dialogshow");
             })
             $("#btn2").click(function(){
                 $("#mask").css("height",0);   
-                $("#mask").css("width",0);
-                $("#mask").animate({opacity:'0.4'});
-                $(".dialog").animate({top:'-200px'},300,function(){
-                    $(".dialog").removeClass("dialogshow");
-                })
+                $("#mask").css("width",0);      
+                $(".dialog").removeClass("dialogshow");        
             })
         });
         return this;
@@ -141,24 +133,26 @@
     this.each(function(){
         //各种功能  //可以理解成功能代码
         var _this = $(this);
-        _this.click(function(){
-            $(".list").css("display","block").animate({top:'-95px'},300);
-            $(".transparentbox").css("display","block");
-        });
-        $(".list li").click(function(){
-            $(".list").animate({top:'95px'},200,function(){
-                $(".list").css("display","none")
-                $(".transparentbox").css("display","none");
-            })       
-            var text=$(this).text();
-            $(".model-select-text").text(text).css("color","rgb(56, 55, 55)")
+        $('.select input').on('click',function(){
+            if($('.select .city').is('.hide')){
+                $('.select .city').removeClass('hide');
+            }else{
+                $('.select .city').addClass('hide');
+            }
         })
-        $(".transparentbox").click(function(){
-            $(".list").animate({top:'95px'},200,function(){
-                $(".list").css("display","none")
-                $(".transparentbox").css("display","none");
-            })
+        $('.select ul li').on('click',function(){
+            console.log($(this).html(), '$(this).html()');
+            $('.select input').val($(this).html());
+            $('.select .city').addClass('hide');
+            $('.select input').css('border-bottom','1px solid $d6d6d6');
         })
+        $('.select ul li').hover(
+            function(){
+                $(this).css({'backgroundColor':'#fd9','font-size':'24px'});
+            },function(){
+                $(this).css({'backgroundColor':'#fff','font-size':'16px'});
+            }
+        )
     });
     return this;
     }
@@ -170,12 +164,18 @@
         this.each(function(){
             //各种功能  //可以理解成功能代码
             $(".Radio1").click(function(){
+                $(".radio").removeAttr("checked");
                 $(".Radio").css("background-image","url(false.png)");
                 $(".Radio1").css("background-image","url(ture.png)");
+                $("#man").attr("checked","checked");
+                
             })
             $(".Radio2").click(function(){
+                $(".radio").removeAttr("checked");
                 $(".Radio").css("background-image","url(false.png)");
                 $(".Radio2").css("background-image","url(ture.png)");
+                $("#girl").attr("checked","checked");
+                
             })
         });
     }

@@ -56,11 +56,16 @@ li{
     z-index: 1003;
     left: 50%;
     margin-left: -200px;
-    top:0px;
+    top:20%;
 }
 .dialogshow{
-    opacity:0.6;
+    animation: myfirst 1.5s;
     display: block;   
+}
+@keyframes myfirst
+{
+from {left:50%; top:0px;margin-left:-200px;}
+to {left:50%; top:20%;margin-left:-200px;}
 }
 .dialogshow p{
     margin-bottom: 20px;
@@ -104,8 +109,8 @@ li{
     left: 0px; 
     background-color: black;   
     z-index: 1002;   
-    opacity:0.4; 
-    filter: alpha(opacity=40);  
+    opacity:0.8; 
+    filter: alpha(opacity=80);  
 }
 .btn{
     display: block;
@@ -185,56 +190,76 @@ li{
     top: 50%;
     margin-top: -20px;
 }
-.model-select-box{
-    height: 50px;
-    display: flex;
-    flex-wrap: nowrap;
-    align-content: flex-start;
-    margin: 100px 50px;
-    
+.hide {
+    display: none;
 }
-.model-select-title{
-    width: 80px;
-    padding: 8px;
-    margin-right: 10px;
+ 
+input {
+    outline: none;
+}
+ 
+/* 模拟下拉框 */
+.hide {
+    display: none;
+}
+ 
+input {
+    outline: none;
+}
+.selectbox{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin: 30px 50px;
+}
+.selecttitle{
     font-size: 24px;
     font-weight: 700;
-    color: rgb(49, 48, 48);
+    margin-right: 10px;
 }
-.model-select-pulldown{
-    width: 100%;
-}
-.model-select-text{
-    padding: 8px;
-    font-size: 24px;
-    color: rgb(177,175,175);
-    border: 1px solid rgba(177, 175, 175, 0.623);
-}
-.model-select-text:hover{
-    cursor: pointer;
-    background-color: rgb(205, 224, 205);
-    color: white;
-}
-.list{
+.select {
+    flex-grow: 1;
     position: relative;
-    z-index: 201;
-    border: 1px solid rgba(177, 175, 175, 0.623);
-    margin-top: 100px;
-    display: none;
-    background-color: #fff;
 }
-.list li{
-    padding: 8px;
-    font-size: 24px;
-    color: rgb(56, 55, 55);
-}
-.list li:hover{
-    background-color:rgb(126, 221, 126);
-    color: white !important;
+ 
+.select .input_in input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 20px;
+    padding: 0;
+    padding: 10px 0 10px 10px;
+    border: 1px solid #d6d6d6;
     cursor: pointer;
+    font-size: 24px;
 }
-.model-select-box .model-select-pulldown .colortext{
-    color:  rgb(177,175,175);
+
+.select .city {
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    animation: mysecond 1s;
+}
+@keyframes mysecond
+{
+from {width: 0% ;}
+to {width: 100%;;}
+}
+.select .city ul {
+    background-color: #fff;
+    border: 1px solid #d6d6d6;
+    border-top: none;
+    
+}
+ 
+.select .city ul li {
+    font-size: 16px;
+    padding-left: 10px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    
 }
 .transparentbox{
     position: fixed; 
@@ -261,6 +286,9 @@ li{
     font-size: 24px;
     font-weight: 700;
     color: rgb(49, 48, 48);
+}
+.radio{
+    display: none;
 }
 .Radio1,.Radio2{
     height: 18px;

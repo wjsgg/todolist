@@ -74,29 +74,37 @@
         <div class="btn-right">&gt;</div>
     </div>
 
-    <div class="model-select-box">
-        <div class="model-select-title">选择框</div>
-        <div class="model-select-pulldown">
-            <div class="model-select-text">请选择 </div>
-            <ul class="list">
-                <li class="colortext">请选择</li>
-                <li>写作</li>
-                <li>阅读</li>
-                <li>游戏</li>
-                <li>音乐</li>
-                <li>旅行</li>
-            </ul>
+    
+    <div class="selectbox">
+        <div class="selecttitle">选择框</div>
+        <div class="select">   
+            <div class="input_in">
+                <input type="text" value="请选择" />
+            </div>
+            <div class="city hide">
+                <ul>
+                    <li>请选择</li>
+                    <li>写作</li>
+                    <li>阅读</li>
+                    <li>游戏</li>
+                    <li>音乐</li>
+                    <li>旅行</li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="transparentbox"></div>
+    
 
     <div class="checkbox">
         <div class="checkbox-title">单选框</div>
         <div class="check mr">
+            <input type="radio" class="radio" name="sex" id="man">
             <div class="Radio Radio1"></div>
             <div>男</div>
         </div>
         <div class="check">
+            <input type="radio" class="radio" id="girl" name="sex">
             <div class="Radio Radio2"></div>
             <div>女</div>
         </div>
@@ -108,7 +116,7 @@
         $(".tabs-contain").tab();
         $(".btn").dialog();
         $(".slider").slider();
-        $(".model-select-box").select();
+        $(".select").select();
         $(".checkbox").checkbox();
     });
 </script>
