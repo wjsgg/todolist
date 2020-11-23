@@ -7,7 +7,7 @@
   </head>
   <body>
     <section class="todoapp">
-      <h1 class="header">todos</h1>
+      <h1 class="header">To Do List</h1>
       <header class="new-todobox">
         <input
           class="new-todo"
@@ -29,9 +29,9 @@
           >
             <div class="textbox">
               <input class="toggle" type="checkbox" v-model="todo.completed" />
-              {{ todo.title }}
-              <button class="destroy" @click="removeTodo(todo)">Remove</button>
+              {{ todo.title }}              
             </div>
+            <button class="destroy btn1" @click="removeTodo(todo)">Remove</button>
           </li>
         </ul>
       </section>
@@ -39,26 +39,28 @@
         <span class="todo-count">
           <strong>{{ remaining }}</strong> {{ remaining | pluralize }}
         </span>
-        <ul class="filters">
-          <li class="mr">
-            <a  href="#/all">全部任务</a>
+        <ul class="btns">
+          <li class="btn1 mr">
+            <a  href="#/all" :class="{ selected: visibility == 'all' }">全部任务</a>
           </li>
-          <li class="mr">
+          <li class=" btn1 mr">
             <a  href="#/active"
+            :class="{ selected: visibility == 'active' }"
               >未完成任务</a
             >
           </li>
-          <li>
+          <li class="btn1">
             <a
               href="#/completed"
+              :class="{ selected: visibility == 'completed' }"
               >已完成任务</a
             >
           </li>
         </ul>
         <button
-          class="clear-completed btn1"
+          class="btn1 clear-completed"
           @click="removeCompleted"
-          v-show="remaining>0"
+          v-show="todos.length > remaining"
         >
           清楚所有已完成任务
         </button>
