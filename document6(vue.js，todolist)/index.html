@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoMVC</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/todolist.css">
+  </head>
+  <body>
+    <section class="todoapp">
+      <h1 class="header">todos</h1>
+      <header class="new-todobox">
+        <input
+          class="new-todo"
+          autofocus
+          autocomplete="off"
+          placeholder="What needs to be done?"
+          v-model="newTodo"
+          @keyup.enter="addTodo"
+        />
+        <button class="btn1" @click="addTodo">ADD</button>
+      </header>
+      <section  >
+        <ul class="todo-list">
+          <li
+            v-for="todo in filteredTodos"
+            class="todo"
+            :key="todo.id"
+            :class="{ completed: todo.completed}"
+          >
+            <div class="textbox">
+              <input class="toggle" type="checkbox" v-model="todo.completed" />
+              {{ todo.title }}
+              <button class="destroy" @click="removeTodo(todo)">Remove</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <footer class="footer" >
+        <span class="todo-count">
+          <strong>{{ remaining }}</strong> {{ remaining | pluralize }}
+        </span>
+        <ul class="filters">
+          <li class="mr">
+            <a  href="#/all">全部任务</a>
+          </li>
+          <li class="mr">
+            <a  href="#/active"
+              >未完成任务</a
+            >
+          </li>
+          <li>
+            <a
+              href="#/completed"
+              >已完成任务</a
+            >
+          </li>
+        </ul>
+        <button
+          class="clear-completed btn1"
+          @click="removeCompleted"
+          v-show="remaining>0"
+        >
+          清楚所有已完成任务
+        </button>
+      </footer>
+    </section>
+    
+
+    <script>
+      // localStorage persistence
+      var STORAGE_KEY = "todolist";
+      var todoStorage = {
+        fetch: function() {
+          var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+          todos.forEach(function(todo, index) {
+            todo.id = index;
+          });
+          todoStorage.uid = todos.length;
+          return todos;
+        },
+        save: function(todos) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+        }
+      };
+
+      // visibility filters
+      var filters = {
+        all: function(todos) {
+          return todos;
+        },
+        active: function(todos) {
+          return todos.filter(function(todo) {
+            return !todo.completed;
+          });
+        },
+        completed: function(todos) {
+          return todos.filter(function(todo) {
+            return todo.completed;
+          });
+        }
+      };
+
+      // app Vue instance
+      var app = new Vue({
+        // app initial state
+        data: {
+          todos: todoStorage.fetch(),
+          newTodo: "",
+          visibility: "all"
+        },
+
+        // watch todos change for localStorage persistence
+        watch: {
+          todos: {
+            handler: function(todos) {
+              todoStorage.save(todos);
+            },
+            deep: true
+          }
+        },
+        computed: {
+          filteredTodos: function() {
+            return filters[this.visibility](this.todos);
+          },
+          remaining: function() {
+            return filters.active(this.todos).length;
+          },
+        },
+
+        filters: {
+          pluralize: function(n) {
+            return "件任务待办";
+          }
+        },
+
+        // methods that implement data logic.
+        // note there's no DOM manipulation here at all.
+        methods: {
+          addTodo: function() {
+            var value = this.newTodo && this.newTodo.trim();
+            if (!value) {
+              return;
+            }
+            this.todos.push({
+              id: todoStorage.uid++,
+              title: value,
+              completed: false
+            });
+            this.newTodo = "";
+          },
+          removeTodo: function(todo) {
+            this.todos.splice(this.todos.indexOf(todo), 1);
+          },
+          removeCompleted: function() {
+            this.todos = filters.active(this.todos);
+          }
+        },
+
+      });
+
+      // handle routing
+      function onHashChange() {
+        var visibility = window.location.hash.replace(/#\/?/, "");
+        if (filters[visibility]) {
+          app.visibility = visibility;
+        } else {
+          window.location.hash = "";
+          app.visibility = "all";
+        }
+      }
+      window.addEventListener("hashchange", onHashChange);
+      onHashChange();
+      app.$mount(".todoapp");
+    </script>
+  </body>
+</html>
