@@ -42,8 +42,9 @@
     </div>
 
     <div id="mask" class="mask"></div>
-    <div class="item dialog">
-            <div class="text">你知道吗？亲！
+    <div class="dialog">
+            <div class="text">
+                <p>你知道吗？亲！</p>
                 <p>layer ≠ layui</p>
                 <p>layer只是作为Layui的一个弹层模块，由于其用户基数较大，所以常常会有人以为layui是layerui</p>
                 <p>layer虽然已被 Layui 收编为内置的弹层模块，但仍然会作为一个独立组件全力维护、升级。 </p>
@@ -56,7 +57,7 @@
     </div>
     <button type="button" class="btn">示范一个公告层</button>
 
-    <div class="slider">
+    <!-- <div class="slider">
         <ul class="images">
             <li><img src="images/OIP1.jpg" alt="" style="width:100%;height:100%;"></li>
             <li><img src="images/OIP2.jpg" alt="" style="width:100%;height:100%;"></li>
@@ -65,16 +66,38 @@
             <li><img src="images/OIP1.jpg" alt="" style="width:100%;height:100%;"></li>
         </ul>
         <div class="odivnav">
-            <span class="spanlist"></span>
-            <span class="spanlist"></span>
-            <span class="spanlist"></span>
-            <span class="spanlist"></span>
+            <span class="spanlist" id="sl1"></span>
+            <span class="spanlist" id="sl2"></span>
+            <span class="spanlist" id="sl3"></span>
+            <span class="spanlist" id="sl4"></span>
         </div>
         <div class="btn-left">&lt;</div>
         <div class="btn-right">&gt;</div>
+    </div> -->
+
+    <div class="test slide-item-left">
+
     </div>
 
-    
+    <div class="banbox">
+        <div id="banner">
+            <ul class="slide">
+                <li class="slide-item active carousel-item-left" data-index="0">
+                    <a href="#"><img src="images/OIP1.jpg" /></a>
+                </li>
+                <li class="slide-item " data-index="1">
+                    <a href="#"><img src="images/OIP2.jpg" /></a>
+                </li>
+                <li class="slide-item" data-index="2">
+                    <a href="#"><img src="images/OIP3.jpg" /></a>
+                </li>
+                <li class="slide-item" data-index="3">
+                    <a href="#"><img src="images/OIP4.jpg" /></a>
+                </li>
+            </ul>
+            </div>
+        </div>
+
     <div class="selectbox">
         <div class="selecttitle">选择框</div>
         <div class="select">   
@@ -93,8 +116,9 @@
             </div>
         </div>
     </div>
-    <div class="transparentbox"></div>
     
+    
+
 
     <div class="checkbox">
         <div class="checkbox-title">单选框</div>
@@ -110,12 +134,14 @@
         </div>
     </div>
     
+
     <div class="footer"></div>
 <script> 
     $(function(){
         $(".tabs-contain").tab();
         $(".btn").dialog();
-        $(".slider").slider();
+        // $(".slider").slider();
+        $(".odivnav").odivnav();
         $(".select").select();
         $(".checkbox").checkbox();
     });
